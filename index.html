@@ -1,0 +1,90 @@
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Ahorcado</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="styles.css">
+        
+
+    </head>
+
+    <body>
+
+        <header>
+            <h1><a href="index.html"><img class="logo" src="images/logo_alura.png"></a></h1>
+        </header>
+
+
+
+        <main class="content">
+
+            <section id="start" class="start-part">
+
+                <button id="game-start" class="blue-button" onclick="playGame()">Iniciar Juego</button>
+                <button id="add-word" class=" white-button" onclick="writeYourWord()">Agregar nueva palabra</button>
+
+            </section>
+
+
+            <section id="write" class="write-part">
+
+                <div class="write-input">
+
+                    <textarea id="madeWord" placeholder="Ingrese una palabra"></textarea>
+
+                </div>
+
+                <div class="write-buttons-text">
+
+                    <p class="advice-text">☑ Max de 8 letras</p>
+                    
+                    <div class="write-buttons">
+
+                        <button class="blue-button save" onclick="saveAndPlay()">Guardar y empezar</button>
+                        <button class="white-button cancel" onclick="cancel()">Cancelar</button>
+
+                    </div>
+                    
+                </div>
+    
+                </div>
+
+            </section>
+
+
+            <section id="game" class="game-part">
+
+                <div class="game-scenario">
+
+                    <canvas width="600" height="400"></canvas>
+                    <p>_ _ _ _ _ _ _</p>
+
+                </div>
+                
+                <div class="game-buttons">
+
+                    <button class="blue-button new-game"">Nuevo Juego</button>
+
+                    <button class="white-button surrender">Desistir</button>
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+
+        <footer>
+
+
+        </footer>
+
+
+    </body>
+    
+    
+
+    <script src="funcionamiento.js"></script>
+</html>
