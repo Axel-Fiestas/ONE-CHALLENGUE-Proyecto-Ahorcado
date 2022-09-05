@@ -33,7 +33,7 @@ var showGuions=()=>{ //Mostrar guíones
     pincel2.lineWidth = 4;
 
     for(let i=0;i<chosenWord.length;i++){
-        pincel2.fillRect(50*i,0,30,5);
+        pincel2.fillRect(((600*i)/chosenWord.length)+(1*i),0,(600/chosenWord.length)-25,5);
     }
 
     //Con divide && conquer
@@ -216,7 +216,7 @@ var writeYourWord=()=>{
 
 
 var hangmanFlag=0;
-var wordsArray=["Java","Html","Vue","Cmas","Javascri","Python"];
+var wordsArray=["Java","Html","Vue","Cmas","Javascri","Python","Programa"];
 var chosenWord=toString;
 
 var pantalla=document.querySelector(".hangman-draw");
