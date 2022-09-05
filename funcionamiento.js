@@ -28,57 +28,59 @@ var chooseWord=()=>{
 }
 var showGuions=()=>{ //Mostrar guíones
     //Con fuerza bruta
-    //
-    //
-    //for(let i=0;i<guions.length;i++){
-    //    console.log("_");
-    //}
-    //
+    pincel2.strokeStyle = "#0A3871";
+    pincel2.fillStyle="#0A3871";
+    pincel2.lineWidth = 4;
+
+    for(let i=0;i<chosenWord.length;i++){
+        pincel2.fillRect(50*i,0,30,5);
+    }
+
     //Con divide && conquer
-    first=0
-    middle=Math.floor(word.length/2); //mitad
-    end=(word.length);
-
-    left_part=word.slice(0,middle);
-    right_part=word.slice(middle,end);
-    
-    console.log(left_part);
-    console.log(right_part);
-
-    i=0;
-    j=0;
-
-    while(i<left_part.length && j<right_part.length){
-        
-        if(left_part[i]!=null){
-            console.log("_")
-            i++;
-        }
-        if(right_part[j]!=null){
-            console.log("_")
-            j++;
-        }
-    }
-
-    while(i<left_part.length){
-        if(left_part[i]!=null){
-            console.log("_");
-            i++;
-        }
-    }
-
-    while(j<right_part.length){
-        if(right_part[j]!=null){
-            console.log("_")
-            j++;
-        }
-    }
-
+    //first=0
+    //middle=Math.floor(word.length/2); //mitad
+    //end=(word.length);
+//
+    //left_part=word.slice(0,middle);
+    //right_part=word.slice(middle,end);
+    //
+    //console.log(left_part);
+    //console.log(right_part);
+//
+    //i=0;
+    //j=0;
+//
+    //while(i<left_part.length && j<right_part.length){
+    //    
+    //    if(left_part[i]!=null){
+    //        console.log("_")
+    //        i++;
+    //    }
+    //    if(right_part[j]!=null){
+    //        console.log("_")
+    //        j++;
+    //    }
+    //}
+//
+    //while(i<left_part.length){
+    //    if(left_part[i]!=null){
+    //        console.log("_");
+    //        i++;
+    //    }
+    //}
+//
+    //while(j<right_part.length){
+    //    if(right_part[j]!=null){
+    //        console.log("_")
+    //        j++;
+    //    }
+    //}
+//
 }
 
 var receiveWord=()=>{
     let word=document.getElementById("madeWord").value;
-    return word;
+    return String(word);
 }
 
 var addWord=()=>{
@@ -191,15 +193,15 @@ var appearGamePart=()=>{
 
 var saveAndPlay=()=>{
     addWord();
-    disappearWritePart();
-    appearGamePart();
-    chosenWord=chooseWord();
+    playGame();
 }
 
 var playGame=()=>{
     disappearStartPart();
+    disappearWritePart();
     appearGamePart();
     chosenWord=chooseWord();
+    showGuions();
 }
 
 var cancel=()=>{
@@ -213,14 +215,23 @@ var writeYourWord=()=>{
 }
 
 
-
-
 var hangmanFlag=0;
-var wordsArray=["Java","Html","Vue","CPlasPlas","Javascript","Python"];
-var chosenWord;
+var wordsArray=["Java","Html","Vue","Cmas","Javascri","Python"];
+var chosenWord=toString;
 
-var pantalla=document.querySelector("canvas");
+var pantalla=document.querySelector(".hangman-draw");
 var pincel= pantalla.getContext("2d");
+
+var silaba=document.querySelector(".lines-of-words");
+var pincel2=silaba.getContext("2d");
+
+
+
+
+
+
+
+
 
 //showGuions();
 
