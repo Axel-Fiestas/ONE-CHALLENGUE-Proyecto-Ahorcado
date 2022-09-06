@@ -78,6 +78,16 @@ var showGuions=()=>{ //Mostrar guíones
 //
 }
 
+//Recibir letra del teclado
+
+var reciebeKeyboard=()=>{
+
+    let teclaMayus=document.addEventListener("keydown",function(event){
+        console.log(event.key);
+    });
+
+}
+
 var receiveWord=()=>{
     let word=document.getElementById("madeWord").value;
     return String(word);
