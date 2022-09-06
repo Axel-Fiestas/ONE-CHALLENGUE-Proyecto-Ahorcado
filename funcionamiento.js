@@ -78,14 +78,14 @@ var showGuions=()=>{ //Mostrar guíones
 //
 }
 
-//Recibir letra del teclado
-
-var reciebeKeyboard=()=>{
-
-    let teclaMayus=document.addEventListener("keydown",function(event){
-        console.log(event.key);
+var checkPressedKeyIsLetter=()=>{
+    let isLetter;
+    document.addEventListener("keydown",function(event){
+        isLetter= (/^[a-zA-Z]+$/.test(event.key));
     });
 
+    console.log(isLetter);
+    
 }
 
 var receiveWord=()=>{
@@ -237,10 +237,7 @@ var pincel2=silaba.getContext("2d");
 
 
 
-
-
-
-
+checkPressedKeyIsLetter();
 
 
 //showGuions();
