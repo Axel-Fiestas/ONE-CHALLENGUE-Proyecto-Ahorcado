@@ -16,17 +16,24 @@
 
 
 */
-var generateNumberInRange=(min,max)=>{
+document.addEventListener("keypress",isALetter);
+
+function isALetter(event){
+    let teclaPush=event.key.toUpperCase();
+    let isLetter= (/[a-zA-Z]/).test(teclaPush);
+}
+
+const generateNumberInRange=(min,max)=>{
     let number=Math.random()*(max-min)+min;
     number=Math.floor(number);
     return number;
 }
-var chooseWord=()=>{
+const chooseWord=()=>{
     let limitArray=(wordsArray.length)-1;
     let position=generateNumberInRange(0,limitArray);
     return wordsArray[position];
 }
-var showGuions=()=>{ //Mostrar guíones
+const showGuions=()=>{ //Mostrar guíones
     //Con fuerza bruta
     pincel2.strokeStyle = "#0A3871";
     pincel2.fillStyle="#0A3871";
@@ -78,27 +85,17 @@ var showGuions=()=>{ //Mostrar guíones
 //
 }
 
-var checkPressedKeyIsLetter=()=>{
-    let isLetter;
-    document.addEventListener("keydown",function(event){
-        isLetter= (/^[a-zA-Z]+$/.test(event.key));
-    });
-
-    console.log(isLetter);
-    
-}
-
-var receiveWord=()=>{
+const receiveWord=()=>{
     let word=document.getElementById("madeWord").value;
     return String(word);
 }
 
-var addWord=()=>{
+const addWord=()=>{
     let word=receiveWord();
     wordsArray.push(word);
 }
 
-var drawHanged=()=>{
+const drawHanged=()=>{
 
     pincel.strokeStyle = "#0A3871";
     pincel.fillStyle="#0A3871";
@@ -164,69 +161,53 @@ var drawHanged=()=>{
     }
 }
 
-var clearHangmanDraw=()=>{
+const clearHangmanDraw=()=>{
     hangmanFlag=0;
     pincel.clearRect(0, 0, 600, 400);
 }
 
-var drawPartOfHangman=()=>{
+const drawPartOfHangman=()=>{
     hangmanFlag+=1;
     drawHanged();
 }
 
 /*disappear and appear Functions*/
-var disappearStartPart=()=>{
-    document.getElementById("start").style.display="none";
-}
-
-var appearStartPart=()=>{
-    document.getElementById("start").style.display="flex";
-}
-
-var disappearWritePart=()=>{
-    document.getElementById("write").style.display="none";
-}
-
-var appearWritePart=()=>{
-    document.getElementById("write").style.display="flex";
-}
-
-var disappearGamePart=()=>{
-    document.getElementById("game").style.display="none";
-}
-
-var appearGamePart=()=>{
-    document.getElementById("game").style.display="flex";
-}
+const disappearStartPart=()=>document.getElementById("start").style.display="none";
+const appearStartPart=()=>document.getElementById("start").style.display="flex";
+const disappearWritePart=()=>document.getElementById("write").style.display="none";
+const appearWritePart=()=>document.getElementById("write").style.display="flex";
+const disappearGamePart=()=>document.getElementById("game").style.display="none";
+const appearGamePart=()=>document.getElementById("game").style.display="flex";
 
 /*button on click functions*/
 
-var saveAndPlay=()=>{
+const saveAndPlay=()=>{
     addWord();
     playGame();
 }
 
-var playGame=()=>{
+const playGame=()=>{
     disappearStartPart();
     disappearWritePart();
     appearGamePart();
     chosenWord=chooseWord();
     showGuions();
+    
 }
 
-var cancel=()=>{
+const cancel=()=>{
     disappearWritePart();
     appearStartPart();
 }
 
-var writeYourWord=()=>{
+const writeYourWord=()=>{
     disappearStartPart();
     appearWritePart();
 }
 
 
 var hangmanFlag=0;
-var wordsArray=["Java","Html","Vue","Cmas","Javascri","Python","Programa"];
+const wordsArray=["Java","Html","Vue","Cmas","Javascri","Python","Programa"];
 var chosenWord=toString;
 
 var pantalla=document.querySelector(".hangman-draw");
@@ -234,11 +215,6 @@ var pincel= pantalla.getContext("2d");
 
 var silaba=document.querySelector(".lines-of-words");
 var pincel2=silaba.getContext("2d");
-
-
-
-checkPressedKeyIsLetter();
-
 
 //showGuions();
 
