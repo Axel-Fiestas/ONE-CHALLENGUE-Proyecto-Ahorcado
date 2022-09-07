@@ -16,12 +16,19 @@
 
 
 */
-document.addEventListener("keypress",isALetter);
 
-function isALetter(event){
-    let teclaPush=event.key.toUpperCase();
-    let isLetter= (/[a-zA-Z]/).test(teclaPush);
+function Verify(event){
+    let letter= isALetter(event.key)
+
+    if(letter){
+        drawPartOfHangman();
+    }else{
+
+    }
 }
+
+const isALetter= (letter)=> (/[a-zA-Z]/).test(letter);
+
 
 const generateNumberInRange=(min,max)=>{
     let number=Math.random()*(max-min)+min;
@@ -192,6 +199,7 @@ const playGame=()=>{
     appearGamePart();
     chosenWord=chooseWord();
     showGuions();
+    document.addEventListener("keypress",Verify);
     
 }
 
