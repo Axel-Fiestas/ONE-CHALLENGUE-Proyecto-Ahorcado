@@ -9,7 +9,7 @@
 - Para comenzar el juego la página debe tener un botón de "Iniciar Juego";
 - No debe ser posible escribir números dentro del juego.
 - Las letras equivocadas deben aparecer en la pantalla, pero no pueden aparecer de forma repetida;
-- Las letras correctas deben aparecer en la pantalla encima de los guiones, en la posición correcta em relación a la palabra.
+- Las letras correctas deben aparecer en la pantalla encima de los guiones, en la posición correcta en relación a la palabra.
 
 **Extras:**
 - La página debe tener un campo para inserción de texto con la finalidad de adicionar nuevas palabras al juego, e un botón "Agregar palabra". 
@@ -17,18 +17,40 @@
 
 */
 
+// const div=document.querySelector(".words-error");
+// div.innerHTML=errorWords[0];
+
 function Verify(event){
-    let letter= isALetter(event.key)
 
-    if(letter){
-        drawPartOfHangman();
+    let letter=event.key.toUpperCase();
+    console.log(letter);
+    let isLetter=isALetter(letter);
+
+
+    if(isLetter && checkLetterInSecretWord(letter)){
+        alert("NICE!");
     }else{
-
+        drawPartOfHangman();
     }
 }
 
-const isALetter= (letter)=> (/[a-zA-Z]/).test(letter);
+const addWrongLetters=(letter)=>{
+    
+    if(errorWords.includes(letter)){
+        return;
+    }else{
+        errorWords.push(letter);
+    }
 
+}
+
+const checkLetterInSecretWord=letter=>{
+    for(let i=0;i<chosenWord.length;i++){
+        if(letter==chosenWord[i])return true;
+    }
+    return false;
+}
+const isALetter= letter=> (/[a-zA-Z]/).test(letter);
 
 const generateNumberInRange=(min,max)=>{
     let number=Math.random()*(max-min)+min;
@@ -40,7 +62,7 @@ const chooseWord=()=>{
     let position=generateNumberInRange(0,limitArray);
     return wordsArray[position];
 }
-const showGuions=()=>{ //Mostrar guíones
+const showGuions=()=>{
     //Con fuerza bruta
     pincel2.strokeStyle = "#0A3871";
     pincel2.fillStyle="#0A3871";
@@ -91,17 +113,17 @@ const showGuions=()=>{ //Mostrar guíones
     //}
 //
 }
-
+const clearGuions=()=>{
+    pincel2.clearRect(0, 0, 600, 20);
+}
 const receiveWord=()=>{
     let word=document.getElementById("madeWord").value;
     return String(word);
 }
-
 const addWord=()=>{
     let word=receiveWord();
     wordsArray.push(word);
 }
-
 const drawHanged=()=>{
 
     pincel.strokeStyle = "#0A3871";
@@ -167,12 +189,10 @@ const drawHanged=()=>{
 
     }
 }
-
 const clearHangmanDraw=()=>{
     hangmanFlag=0;
     pincel.clearRect(0, 0, 600, 400);
 }
-
 const drawPartOfHangman=()=>{
     hangmanFlag+=1;
     drawHanged();
@@ -199,8 +219,16 @@ const playGame=()=>{
     appearGamePart();
     chosenWord=chooseWord();
     showGuions();
+    console.log(chosenWord);
     document.addEventListener("keypress",Verify);
     
+}
+
+const desist=()=>{
+    clearHangmanDraw();
+    clearGuions();
+    disappearGamePart();
+    appearStartPart();
 }
 
 const cancel=()=>{
@@ -215,7 +243,8 @@ const writeYourWord=()=>{
 
 
 var hangmanFlag=0;
-const wordsArray=["Java","Html","Vue","Cmas","Javascri","Python","Programa"];
+const wordsArray=["JAVA","HTML","VUE","CMAS","JAVASCRI","PYTHON","PROGRAMA"];
+const errorWords=[];
 var chosenWord=toString;
 
 var pantalla=document.querySelector(".hangman-draw");
@@ -223,6 +252,4 @@ var pincel= pantalla.getContext("2d");
 
 var silaba=document.querySelector(".lines-of-words");
 var pincel2=silaba.getContext("2d");
-
-//showGuions();
 
