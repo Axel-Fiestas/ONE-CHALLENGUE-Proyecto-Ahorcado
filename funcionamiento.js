@@ -13,37 +13,62 @@
 
 **Extras:**
 - La página debe tener un campo para inserción de texto con la finalidad de adicionar nuevas palabras al juego, e un botón "Agregar palabra". 
-
-
 */
 
-// const div=document.querySelector(".words-error");
-// div.innerHTML=errorWords[0];
 
 function Verify(event){
 
     let letter=event.key.toUpperCase();
     console.log(letter);
-    let isLetter=isALetter(letter);
 
+    if(isALetter(letter)){
 
-    if(isLetter && checkLetterInSecretWord(letter)){
-        alert("NICE!");
-    }else{
-        drawPartOfHangman();
+        if(checkLetterInSecretWord(letter))alert("NICE!");
+        else{
+            if(!checkRepeatedLetter(letter)){
+                addWrongLetters(letter);
+                showWrongWords(errorWords);
+                drawPartOfHangman();
+                drawLetter();
+            }
+        }
+    }
+
+}
+
+const drawLetter=()=>{
+
+    pincel3.font='bold 50pt Menlo';
+    pincel3.fillStyle='#000000';
+
+    for(let i=0;i<chosenWord.length;i++){
+
+        pincel3.fillText("H",((600*i)/chosenWord.length)+(1*i),100);
     }
 }
 
-const addWrongLetters=(letter)=>{
-    
+const checkRepeatedLetter=(letter)=>{
+
     if(errorWords.includes(letter)){
-        return;
+        return true;
     }else{
-        errorWords.push(letter);
+        return false;
     }
-
 }
 
+const showWrongWords=(arr)=>{
+    let cadena="";
+    for(let i=0;i<arr.length;i++){
+        cadena+=" ";
+        cadena+=arr[i];
+    }
+
+    document.getElementById("palabras-erroneas").innerHTML=cadena;
+}
+
+const addWrongLetters=letter=>{
+    errorWords.push(letter);
+}
 const checkLetterInSecretWord=letter=>{
     for(let i=0;i<chosenWord.length;i++){
         if(letter==chosenWord[i])return true;
@@ -63,7 +88,6 @@ const chooseWord=()=>{
     return wordsArray[position];
 }
 const showGuions=()=>{
-    //Con fuerza bruta
     pincel2.strokeStyle = "#0A3871";
     pincel2.fillStyle="#0A3871";
     pincel2.lineWidth = 4;
@@ -71,47 +95,6 @@ const showGuions=()=>{
     for(let i=0;i<chosenWord.length;i++){
         pincel2.fillRect(((600*i)/chosenWord.length)+(1*i),0,(600/chosenWord.length)-25,5);
     }
-
-    //Con divide && conquer
-    //first=0
-    //middle=Math.floor(word.length/2); //mitad
-    //end=(word.length);
-//
-    //left_part=word.slice(0,middle);
-    //right_part=word.slice(middle,end);
-    //
-    //console.log(left_part);
-    //console.log(right_part);
-//
-    //i=0;
-    //j=0;
-//
-    //while(i<left_part.length && j<right_part.length){
-    //    
-    //    if(left_part[i]!=null){
-    //        console.log("_")
-    //        i++;
-    //    }
-    //    if(right_part[j]!=null){
-    //        console.log("_")
-    //        j++;
-    //    }
-    //}
-//
-    //while(i<left_part.length){
-    //    if(left_part[i]!=null){
-    //        console.log("_");
-    //        i++;
-    //    }
-    //}
-//
-    //while(j<right_part.length){
-    //    if(right_part[j]!=null){
-    //        console.log("_")
-    //        j++;
-    //    }
-    //}
-//
 }
 const clearGuions=()=>{
     pincel2.clearRect(0, 0, 600, 20);
@@ -252,4 +235,8 @@ var pincel= pantalla.getContext("2d");
 
 var silaba=document.querySelector(".lines-of-words");
 var pincel2=silaba.getContext("2d");
+
+var secreto= document.querySelector(".secret-word");
+var pincel3= secreto.getContext("2d");
+
 
