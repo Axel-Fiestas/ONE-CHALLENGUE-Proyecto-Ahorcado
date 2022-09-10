@@ -15,31 +15,49 @@
 <body>
 
     <header>
-
-        <h1>Juego</h1>
-        <div class="letra">
-            <p>Aqui va la palabra</p>
-        </div>
-
-        <canvas class="hangman-draw" width="600" height="400"></canvas>
-
-        <p class="error-words"></p>
-
-
-
-
+        <a href="index.html"><img src="images/logo_alura.png"></a>
     </header>
-
-
 
     <main>
 
+        <section class="first" id="initial-part">
+
+            <button id="start">Iniciar Juego</button>
+            <button>Agregar Nueva Palabra</button>
+
+        </section>
+
+
+        <section class="second" id="secondary-part">
+
+            <textarea>Ingrese una palabra</textarea>
+            <p>Max de 8 letras</p>
+            <button>Guardar y empezar</button>
+            <button>Cancelar</button>
+
+        </section>
+
+
+        <section class="third" id="game-part">
+
+            <h1>Juego</h1>
+            <div class="letra">
+                <p>Aqui va la palabra</p>
+            </div>
+
+            <canvas class="hangman-draw" width="600" height="400"></canvas>
+
+            <p class="error-words"></p>
+
+            <button>Nuevo Juego</button>
+            <button>Desistir</button>
+
+        </section>
 
 
 
 
     </main>
-
 
 
 

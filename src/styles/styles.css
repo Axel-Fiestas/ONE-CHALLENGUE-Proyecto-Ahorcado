@@ -1,0 +1,13 @@
+.first{
+
+}
+
+.second{
+    display: none;
+    flex-direction: column;
+}
+
+.third{
+    display: none;
+    flex-direction: column;
+}
