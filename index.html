@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="src/styles/reset.css">
+    <link rel="stylesheet" href="src/styles/styles.css">
 
-    <title>Document</title>
+    <title>Ahorcado</title>
 
 </head>
 
@@ -16,15 +16,25 @@
 
     <header>
 
+        <h1>Juego</h1>
+        <div class="letra">
+            <p>Aqui va la palabra</p>
+        </div>
 
-        <h1>JUEGO</h1>
-        
+        <canvas class="hangman-draw" width="600" height="400"></canvas>
+
+        <p class="error-words"></p>
+
+
+
 
     </header>
 
 
 
     <main>
+
+
 
 
 
@@ -38,11 +48,10 @@
 
 
     </footer>
+
+
+    <script src="src/scripts/script.js" type="module"></script>
     
 </body>
-
-
-
-
 
 </html>
