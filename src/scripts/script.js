@@ -5,7 +5,8 @@ import {
     changeWord,
     addLettersToArray,
     repited,
-    stringWrongWords, checkLose
+    stringWrongWords, checkLose,
+    clearHangmanDraw,
 } from '/src/scripts/functions.js';
 import {drawHanged} from '/src/scripts/Hanged.js';
 
@@ -14,35 +15,22 @@ import {drawHanged} from '/src/scripts/Hanged.js';
 
 const words=["HTML","HELLO","CSHARE","JAVA","ALURA","CAT"];
 
-const secretWord=chooseOneWord(words);
+var usedLetters=[]
 
-const usedLetters=[]
+var wrongLetters=[]
 
-const wrongLetters=[]
+var secretWord="";
 
 var hangmanFlag=0;
 
+//Restore Function
+const restoreData=()=>{
+    hangmanFlag=0;
+    usedLetters=[];
+    wrongLetters=[];
+}
 
-const dScreen=document.querySelector(".hangman-draw");
-const dWrongLetters=document.querySelector('.error-words');
-const pincel= dScreen.getContext("2d");
-
-//Button click
-const startButton= document.getElementById("start");
-startButton.addEventListener("click",()=>{
-    document.getElementById("initial-part").style.display = "none";
-    document.getElementById("game-part").style.display="flex";
-});
-
-const addButton=document.getElementById("add");
-addButton.addEventListener("click", ()=>{
-    document.getElementById("initial-part").style.display = "none";
-    document.getElementById("secondary-part").style.display="flex";
-});
-
-showDashes(secretWord);
-
-document.addEventListener("keypress", function(event){
+const eventoPrincipal=()=>{document.addEventListener("keypress", function(event){
 
     let letter=event.key.toUpperCase();
     let isRepited=repited(usedLetters,letter);
@@ -61,16 +49,40 @@ document.addEventListener("keypress", function(event){
             dWrongLetters.innerHTML= stringWrongWords(wrongLetters);
         }
     }
+})};
+
+const dScreen=document.querySelector(".hangman-draw");
+const dWrongLetters=document.querySelector('.error-words');
+const pincel= dScreen.getContext("2d");
+
+//Button click
+const startButton= document.getElementById("start");
+startButton.addEventListener("click",()=>{
+    document.getElementById("initial-part").style.display = "none";
+    document.getElementById("game-part").style.display="flex";
+    secretWord=chooseOneWord(words);
+    showDashes(secretWord);
+    eventoPrincipal();
+});
+
+const addButton=document.getElementById("add");
+addButton.addEventListener("click", ()=>{
+    document.getElementById("initial-part").style.display = "none";
+    document.getElementById("secondary-part").style.display="flex";
+});
+
+const newGame=document.getElementById("new-start");
+newGame.addEventListener("click",()=>{
+
+    secretWord=chooseOneWord(words);
+    showDashes(secretWord);
+    restoreData();
+    clearHangmanDraw(pincel);
 
 });
 
 
 
-//const btnEnviar=document.querySelector(".boton-enviar");
-//btnEnviar.addEventListener('click',function (){
-//    hangmanFlag++;
-//    drawHanged(hangmanFlag,pincel);
-//});
 
 
 

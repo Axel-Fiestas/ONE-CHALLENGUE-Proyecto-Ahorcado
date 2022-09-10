@@ -20,6 +20,7 @@ export const showDashes=(word)=>{
     }
 }
 
+
 export const checkWord=(word,letter)=> {
 
     if(!isALetter(letter))return false;
@@ -62,6 +63,18 @@ export const stringWrongWords=(arr)=>{
 }
 
 export const checkLose=(data)=>data>=10;
+
+export const clearHangmanDraw=(pincel)=>{
+    pincel.clearRect(0, 0, 600, 400);
+}
+
+
+//const btnEnviar=document.querySelector(".boton-enviar");
+//btnEnviar.addEventListener('click',function (){
+//    hangmanFlag++;
+//    drawHanged(hangmanFlag,pincel);
+//});
+
 
 
 //export {aprendiendo};
