@@ -29,9 +29,15 @@ const pincel= dScreen.getContext("2d");
 
 //Button click
 const startButton= document.getElementById("start");
-startButton.addEventListener("click",function (){
+startButton.addEventListener("click",()=>{
     document.getElementById("initial-part").style.display = "none";
     document.getElementById("game-part").style.display="flex";
+});
+
+const addButton=document.getElementById("add");
+addButton.addEventListener("click", ()=>{
+    document.getElementById("initial-part").style.display = "none";
+    document.getElementById("secondary-part").style.display="flex";
 });
 
 showDashes(secretWord);

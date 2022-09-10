@@ -1,13 +1,13 @@
-.first{
+.main-start{
 
 }
 
-.second{
+.writeWord{
     display: none;
     flex-direction: column;
 }
 
-.third{
+.game{
     display: none;
     flex-direction: column;
 }
