@@ -98,6 +98,29 @@ newGame.addEventListener("click",()=>{
     restoreAll();
 });
 
+const desist=document.getElementById("desist");
+desist.addEventListener("click",()=>{
+    restoreAll();
+    document.getElementById("game-part").style.display="none";
+    document.getElementById("initial-part").style.display="flex";
+})
+
+const newWord=document.getElementById("new-word");
+
+const addAndStart=document.getElementById("save-start");
+addAndStart.addEventListener("click",()=>{
+    words.push(newWord.value.toUpperCase());
+    document.getElementById("secondary-part").style.display="none";
+    document.getElementById("game-part").style.display="flex";
+    restoreAll();
+    eventoPrincipal();
+})
+
+const cancelButton=document.getElementById("cancel");
+cancelButton.addEventListener("click",()=>{
+    document.getElementById("secondary-part").style.display="none";
+    document.getElementById("initial-part").style.display="flex";
+})
 
 
 
