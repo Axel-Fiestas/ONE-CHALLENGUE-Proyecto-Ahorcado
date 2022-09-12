@@ -6,7 +6,8 @@ import {
     addLettersToArray,
     repited,
     stringWrongWords, checkLose,
-    clearHangmanDraw,
+    clearHangmanDraw, clearDashes,
+    checkWin
 } from '/src/scripts/functions.js';
 import {drawHanged} from '/src/scripts/Hanged.js';
 
@@ -37,6 +38,10 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
     let isPartOfWord=checkWord(secretWord,letter);
     let youLose=checkLose(hangmanFlag);
 
+    if(checkWin(secretWord,usedLetters)){
+        console.log("YOU WIN!");
+    }
+
     if(!isRepited && !youLose){
 
         addLettersToArray(usedLetters,letter);
@@ -49,7 +54,10 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
             dWrongLetters.innerHTML= stringWrongWords(wrongLetters);
         }
     }
+
 })};
+
+
 
 const dScreen=document.querySelector(".hangman-draw");
 const dWrongLetters=document.querySelector('.error-words');
@@ -74,6 +82,7 @@ addButton.addEventListener("click", ()=>{
 const newGame=document.getElementById("new-start");
 newGame.addEventListener("click",()=>{
 
+    clearDashes(secretWord);
     secretWord=chooseOneWord(words);
     showDashes(secretWord);
     restoreData();

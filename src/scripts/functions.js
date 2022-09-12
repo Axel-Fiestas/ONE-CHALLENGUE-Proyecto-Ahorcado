@@ -21,6 +21,17 @@ export const showDashes=(word)=>{
 }
 
 
+export const clearDashes=(word)=>{
+
+    for(let i=0;i<word.length;i++){
+        let name="number"+i;
+        let letter=document.getElementById(name);
+        letter.remove();
+    }
+
+}
+
+
 export const checkWord=(word,letter)=> {
 
     if(!isALetter(letter))return false;
@@ -40,6 +51,22 @@ export const changeWord=(word,letter)=> {
             disableLetter.textContent=letter;
         }
     }
+}
+
+export const checkWin=(word,usedLetter)=>{
+
+    let contador=0;
+
+    for(let i=0;i<usedLetter.length;i++){
+
+        if(word.includes(usedLetter[i])){
+            contador++;
+        }
+
+    }
+
+    return contador === word.length;
+
 }
 
 export const repited=(arr,letter)=>{
