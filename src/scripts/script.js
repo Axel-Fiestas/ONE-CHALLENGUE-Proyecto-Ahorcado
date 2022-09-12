@@ -38,10 +38,6 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
     let isPartOfWord=checkWord(secretWord,letter);
     let youLose=checkLose(hangmanFlag);
 
-    if(checkWin(secretWord,usedLetters)){
-        console.log("YOU WIN!");
-    }
-
     if(!isRepited && !youLose){
 
         addLettersToArray(usedLetters,letter);
@@ -53,7 +49,13 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
             drawHanged(hangmanFlag,pincel);
             dWrongLetters.innerHTML= stringWrongWords(wrongLetters);
         }
+
+        if(checkWin(secretWord)){
+            console.log("YOU WIN!");
+        }
     }
+
+
 
 })};
 

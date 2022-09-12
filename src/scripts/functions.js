@@ -53,19 +53,17 @@ export const changeWord=(word,letter)=> {
     }
 }
 
-export const checkWin=(word,usedLetter)=>{
+export const checkWin=(word)=>{
 
-    let contador=0;
-
-    for(let i=0;i<usedLetter.length;i++){
-
-        if(word.includes(usedLetter[i])){
-            contador++;
-        }
-
+    let wordDone="";
+    for(let i=0;i<word.length;i++){
+        let name="number"+i;
+        let letter=document.getElementById(name);
+        wordDone+=letter.textContent;
     }
 
-    return contador === word.length;
+    return wordDone===word;
+
 
 }
 
