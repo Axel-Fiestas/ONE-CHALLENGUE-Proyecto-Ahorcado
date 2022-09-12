@@ -91,6 +91,14 @@ export const clearHangmanDraw=(pincel)=>{
     pincel.clearRect(0, 0, 600, 400);
 }
 
+export const verifier = elemento => {
+    let texto = elemento.value
+    texto = texto.split(/[^a-z/""/]+/g)
+    texto = texto.join("")
+    return elemento.value = texto
+}
+
+
 
 //const btnEnviar=document.querySelector(".boton-enviar");
 //btnEnviar.addEventListener('click',function (){

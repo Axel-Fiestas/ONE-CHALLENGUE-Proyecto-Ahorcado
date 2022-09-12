@@ -7,7 +7,7 @@ import {
     repited,
     stringWrongWords, checkLose,
     clearHangmanDraw, clearDashes,
-    checkWin
+    checkWin,verifier
 } from '/src/scripts/functions.js';
 import {drawHanged} from '/src/scripts/Hanged.js';
 
@@ -64,8 +64,6 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
 
 })};
 
-
-
 const dScreen=document.querySelector(".hangman-draw");
 const dWrongLetters=document.querySelector('.error-words');
 const pincel= dScreen.getContext("2d");
@@ -121,6 +119,7 @@ cancelButton.addEventListener("click",()=>{
     document.getElementById("secondary-part").style.display="none";
     document.getElementById("initial-part").style.display="flex";
 })
+
 
 
 

@@ -35,7 +35,8 @@
         <section class="writeWord" id="secondary-part">
 
             <div class="writeWord-div">
-                <textarea id="new-word" placeholder="Ingresa una palabra" maxlength=8></textarea>
+                <label for="new-word"></label>
+                <textarea id="new-word" placeholder="Ingresa una palabra" maxlength="8" onkeyup="verifier(this)"></textarea>
                 <p>⚠Max de 8 letras</p>
 
                 <div class="buttons-write">
