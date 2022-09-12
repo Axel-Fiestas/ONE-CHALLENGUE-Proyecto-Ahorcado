@@ -37,8 +37,9 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
     let isRepited=repited(usedLetters,letter);
     let isPartOfWord=checkWord(secretWord,letter);
     let youLose=checkLose(hangmanFlag);
+    let youWin=checkWin(secretWord);
 
-    if(!isRepited && !youLose){
+    if(!isRepited && !youLose && !youWin){
 
         addLettersToArray(usedLetters,letter);
 
@@ -53,6 +54,10 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
         if(checkWin(secretWord)){
             console.log("YOU WIN!");
         }
+
+        if(checkLose(hangmanFlag)){
+            console.log("YOU LOSE!");
+        }
     }
 
 
@@ -64,14 +69,21 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
 const dScreen=document.querySelector(".hangman-draw");
 const dWrongLetters=document.querySelector('.error-words');
 const pincel= dScreen.getContext("2d");
+const restoreAll=()=>{
+    clearDashes(secretWord);
+    secretWord=chooseOneWord(words);
+    showDashes(secretWord);
+    restoreData();
+    dWrongLetters.innerHTML= "";
+    clearHangmanDraw(pincel);
+}
 
 //Button click
 const startButton= document.getElementById("start");
 startButton.addEventListener("click",()=>{
     document.getElementById("initial-part").style.display = "none";
     document.getElementById("game-part").style.display="flex";
-    secretWord=chooseOneWord(words);
-    showDashes(secretWord);
+    restoreAll();
     eventoPrincipal();
 });
 
@@ -83,13 +95,7 @@ addButton.addEventListener("click", ()=>{
 
 const newGame=document.getElementById("new-start");
 newGame.addEventListener("click",()=>{
-
-    clearDashes(secretWord);
-    secretWord=chooseOneWord(words);
-    showDashes(secretWord);
-    restoreData();
-    clearHangmanDraw(pincel);
-
+    restoreAll();
 });
 
 

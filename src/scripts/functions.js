@@ -63,8 +63,6 @@ export const checkWin=(word)=>{
     }
 
     return wordDone===word;
-
-
 }
 
 export const repited=(arr,letter)=>{
