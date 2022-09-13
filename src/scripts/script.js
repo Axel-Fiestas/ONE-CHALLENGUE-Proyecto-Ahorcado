@@ -7,7 +7,7 @@ import {
     repited,
     stringWrongWords, checkLose,
     clearHangmanDraw, clearDashes,
-    checkWin,verifier
+    checkWin, isALetter, isAMayus
 } from '/src/scripts/functions.js';
 import {drawHanged} from '/src/scripts/Hanged.js';
 
@@ -29,6 +29,7 @@ const restoreData=()=>{
     hangmanFlag=0;
     usedLetters=[];
     wrongLetters=[];
+    document.getElementById("new-word").value = "";
 }
 
 const eventoPrincipal=()=>{document.addEventListener("keypress", function(event){
@@ -107,18 +108,29 @@ const newWord=document.getElementById("new-word");
 
 const addAndStart=document.getElementById("save-start");
 addAndStart.addEventListener("click",()=>{
-    words.push(newWord.value.toUpperCase());
-    document.getElementById("secondary-part").style.display="none";
-    document.getElementById("game-part").style.display="flex";
-    restoreAll();
-    eventoPrincipal();
+
+    console.log(newWord.value);
+
+    if(isAMayus(newWord)){
+        words.push(newWord.value);
+        document.getElementById("secondary-part").style.display="none";
+        document.getElementById("game-part").style.display="flex";
+        restoreAll();
+        eventoPrincipal();
+    }else{
+        alert("La palabra introducida no es correcta");
+    }
+
+
 })
 
 const cancelButton=document.getElementById("cancel");
 cancelButton.addEventListener("click",()=>{
     document.getElementById("secondary-part").style.display="none";
     document.getElementById("initial-part").style.display="flex";
+    restoreAll();
 })
+
 
 
 

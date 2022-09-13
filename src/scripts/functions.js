@@ -72,7 +72,23 @@ export const repited=(arr,letter)=>{
     return false;
 }
 
-export const isALetter= letter=> (/[a-zA-Z]/).test(letter);
+export const isALetter= letter=> (/[A-Z]/).test(letter);
+
+export const isAMayus=word=>{
+
+    const specialChars = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    let isNumber=/^-?\d+$/.test(word.value);
+    let containSpecialChars=specialChars.test(word.value);
+
+    if(!isNumber && !containSpecialChars){
+        let new_word=word.value.toUpperCase();
+        return word.value===new_word;
+    }else{
+        return false;
+    }
+
+
+}
 
 export const addLettersToArray=(arr,letter)=>{arr.push(letter);}
 
@@ -90,14 +106,6 @@ export const checkLose=(data)=>data>=10;
 export const clearHangmanDraw=(pincel)=>{
     pincel.clearRect(0, 0, 600, 400);
 }
-
-export const verifier = elemento => {
-    let texto = elemento.value
-    texto = texto.split(/[^a-z/""/]+/g)
-    texto = texto.join("")
-    return elemento.value = texto
-}
-
 
 
 //const btnEnviar=document.querySelector(".boton-enviar");
