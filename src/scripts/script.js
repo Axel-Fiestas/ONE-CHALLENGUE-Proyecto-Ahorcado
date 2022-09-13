@@ -7,7 +7,9 @@ import {
     repited,
     stringWrongWords, checkLose,
     clearHangmanDraw, clearDashes,
-    checkWin, isALetter, isAMayus
+    checkWin, isAMayus,
+    containNumber,
+    containCharacterEspecial
 } from '/src/scripts/functions.js';
 import {drawHanged} from '/src/scripts/Hanged.js';
 
@@ -33,15 +35,18 @@ const restoreData=()=>{
     document.getElementById("final-message").innerHTML="";
 }
 
-const eventoPrincipal=()=>{document.addEventListener("keypress", function(event){
+const eventoPrincipal=()=>{document.addEventListener("keypress", function(event) {
 
-    let letter=event.key.toUpperCase();
-    let isRepited=repited(usedLetters,letter);
-    let isPartOfWord=checkWord(secretWord,letter);
-    let youLose=checkLose(hangmanFlag);
-    let youWin=checkWin(secretWord);
+    let letter = event.key.toUpperCase();
+    let isNumber = containNumber(letter);
+    let isCharacter=containCharacterEspecial(letter);
+    let isRepited = repited(usedLetters, letter);
+    let isPartOfWord = checkWord(secretWord, letter);
+    let youLose = checkLose(hangmanFlag);
+    let youWin = checkWin(secretWord);
 
-    if(!isRepited && !youLose && !youWin){
+
+    if(!isRepited && !isNumber && !isCharacter && !youLose && !youWin){
 
         addLettersToArray(usedLetters,letter);
 
@@ -54,11 +59,11 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
         }
 
         if(checkWin(secretWord)){
-            document.getElementById("final-message").innerHTML="GANASTE!";
+            document.getElementById("final-message").innerHTML="GANASTE,FELICIDADES!";
         }
 
         if(checkLose(hangmanFlag)){
-            document.getElementById("final-message").innerHTML="PERDISTE!";
+            document.getElementById("final-message").innerHTML="FIN DEL JUEGO!";
         }
     }
 

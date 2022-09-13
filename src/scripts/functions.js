@@ -14,9 +14,12 @@ export const showDashes=(word)=>{
 
     for(let i=0;i<word.length;i++){
         let letter=document.createElement("SPAN");
+        let space=document.createElement("SPAN");
         letter.id="number"+i
-        letter.textContent="_"+" ";
+        letter.textContent="_";
+        space.textContent=" ";
         part.appendChild(letter);
+        part.appendChild(space)
     }
 }
 
@@ -49,6 +52,8 @@ export const changeWord=(word,letter)=> {
             let name=`number${i}`;
             let disableLetter=document.getElementById(name);
             disableLetter.textContent=letter;
+            disableLetter.style.textDecoration="underline";
+            disableLetter.style.textUnderlineOffset="3px";
         }
     }
 }
@@ -74,13 +79,18 @@ export const repited=(arr,letter)=>{
 
 export const isALetter= letter=> (/[A-Z]/).test(letter);
 
+export const containCharacterEspecial=word=>{
+    const specialChars = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    return specialChars.test(word);
+}
+
+export const containNumber=word=>{
+    return /^-?\d+$/.test(word);
+}
+
 export const isAMayus=word=>{
 
-    const specialChars = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    let isNumber=/^-?\d+$/.test(word.value);
-    let containSpecialChars=specialChars.test(word.value);
-
-    if(!isNumber && !containSpecialChars){
+    if(!containNumber(word.value) && !containCharacterEspecial(word.value)){
         let new_word=word.value.toUpperCase();
         return word.value===new_word;
     }else{
