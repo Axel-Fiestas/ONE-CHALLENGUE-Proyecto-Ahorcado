@@ -1,7 +1,3 @@
-export const aprendiendo=(tecnologia)=>{
-    console.log(`Aprendiendo ${tecnologia}`);
-}
-
 export const chooseOneWord=(array)=>{
     let maxLimit=array.length-1;
     let random=Math.random()*(maxLimit+1);
@@ -116,14 +112,3 @@ export const checkLose=(data)=>data>=10;
 export const clearHangmanDraw=(pincel)=>{
     pincel.clearRect(0, 0, 600, 400);
 }
-
-
-//const btnEnviar=document.querySelector(".boton-enviar");
-//btnEnviar.addEventListener('click',function (){
-//    hangmanFlag++;
-//    drawHanged(hangmanFlag,pincel);
-//});
-
-
-
-//export {aprendiendo};

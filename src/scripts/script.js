@@ -74,6 +74,7 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
 const dScreen=document.querySelector(".hangman-draw");
 const dWrongLetters=document.querySelector('.error-words');
 const pincel= dScreen.getContext("2d");
+
 const restoreAll=()=>{
     clearDashes(secretWord);
     secretWord=chooseOneWord(words);
@@ -83,7 +84,7 @@ const restoreAll=()=>{
     clearHangmanDraw(pincel);
 }
 
-//Button click
+//Button clicks
 const startButton= document.getElementById("start");
 startButton.addEventListener("click",()=>{
     document.getElementById("initial-part").style.display = "none";
