@@ -30,6 +30,7 @@ const restoreData=()=>{
     usedLetters=[];
     wrongLetters=[];
     document.getElementById("new-word").value = "";
+    document.getElementById("final-message").innerHTML="";
 }
 
 const eventoPrincipal=()=>{document.addEventListener("keypress", function(event){
@@ -53,11 +54,11 @@ const eventoPrincipal=()=>{document.addEventListener("keypress", function(event)
         }
 
         if(checkWin(secretWord)){
-            console.log("YOU WIN!");
+            document.getElementById("final-message").innerHTML="GANASTE!";
         }
 
         if(checkLose(hangmanFlag)){
-            console.log("YOU LOSE!");
+            document.getElementById("final-message").innerHTML="PERDISTE!";
         }
     }
 

@@ -93,6 +93,10 @@ button{
 
 /*  INCIAR JUEGO */
 
+.game-message{
+    text-align: center;
+}
+
 .game{
     display: none;
     flex-direction: column;
