@@ -1,5 +1,5 @@
-p,span,html{
-    font-family: "Inter", "Courier New", monospace;
+p,body,span,html,button{
+    font-family: 'Roboto Slab', serif;
 }
 /*HEADER  */
 .header{
@@ -50,7 +50,7 @@ button{
 .blue-button{
 
     color:white;
-    width: 317px;
+    width: 100%;
     height: 114px;
     background-color: #0A3871;
     border-color: #0A3871;
@@ -64,8 +64,9 @@ button{
 
 .white-button{
 
-    width: 280px;
+    width: 100%;
     height: 67px;
+    text-align: center;
     border: 1px solid #0A3871;
     background-color: #FFFFFF;
 }
@@ -79,15 +80,14 @@ button{
 @media(max-width: 320px){
     .game button{
         margin: 0 auto;
-    }
-    .blue-button{
-        margin: 0 auto;
         width: 100%;
         height: auto;
     }
-    .white-button{
+    .blue-button,.white-button{
+        margin: 0 auto;
         width: 100%;
-        height: 60px;
+        height: 100%;
+
     }
 }
 
@@ -100,47 +100,73 @@ button{
 .game{
     display: none;
     flex-direction: column;
+    height: 100%;
+    width: 90%;
+    margin:auto auto;
 }
 
 .error-words{
     margin-top: 3rem;
     color: #0A3871;
 }
+.game-div{
+    width: 100%;
+    margin: auto auto;
+    text-align: center;
+}
 
-@media(max-width: 320px){
-    .game{
-        height: 100%;
-        width: 90%;
-        margin:auto auto;
-    }
-    .game-div{
-        width: 100%;
-        margin: auto auto;
-        text-align: center;
-    }
+.hangman-draw{
+    width: 100%;
+}
 
-    .hangman-draw{
-        width: 100%;
-    }
+.buttons-game{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
+}
+
+.letra{
+    margin-top: 20px;
+}
+
+.letra span{
+    font-size: 40px;
+    color: #0A3871;
+}
+
+@media(max-width: 720px){
     .buttons-game{
-        margin-top: 5rem;
         display: flex;
-        flex-direction: column;
-        gap: 10px;
-
+        flex-direction: row;
     }
-
-    .letra{
-        margin-top: 20px;
-    }
-
-    .letra span{
-        font-size: 40px;
-        color: #0A3871;
+    .buttons-game button{
+        width: 100%;
+        height: 100%;
     }
 }
 
+@media(min-width: 720px){
+    .logo img{
+        width: 2%;
+    }
+    #game-part{
+        margin: auto auto;
+    }
+    .hangman-draw{
+        width: 600px;
+    }
+    .buttons-game{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .buttons-game button{
+        height: 100%;
+    }
+
+}
 
 /* INGRESAR PALABRA */
 
@@ -168,7 +194,7 @@ button{
     color: #0A3871;
     font-size: 30px;
     width: 100%;
-    height: 400px;
+    height: 300px;
 }
 
 .writeWord-div p{
@@ -185,4 +211,117 @@ button{
 textarea::placeholder {
     color: #0A3871;
     font-family: "Berlin Sans FB","Calibri","sans-serif";
+}
+.buttons-message{
+    width: 100%;
+}
+
+@media(max-width: 720px){
+
+    button{
+        font-size: 16px;
+    }
+    .writeWord-div textarea{
+        margin-bottom: 10rem;
+    }
+    .buttons-write{
+        flex-direction: row;
+    }
+    .buttons-write button{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media(min-width: 720px){
+
+    .containt{
+        margin-bottom: 6rem;
+    }
+
+    .blue-button,.white-button{
+        width: 367px;
+        height: 100%;
+    }
+    .writeWord-div{
+        width: 50%;
+    }
+    .buttons-write{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .buttons-write button{
+        width: 90%;
+        height: 100%;
+    }
+
+}
+/*footer*/
+.footer{
+    color:#EFF1FA;
+    background-color: #0A3871;
+    padding: 3rem;
+}
+.footer-images img{
+    width: 30%;
+}
+.footer-content{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.footer-list{
+    display: flex;
+    flex-direction: row;
+}
+.footer-list a{
+    color:#EFF1FA;
+    text-decoration: none;
+    text-underline: none;
+}
+@media(max-width: 320px){
+    .footer-text{
+        margin-bottom: 2rem;
+    }
+    .footer-list{
+        margin-bottom: 2rem;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .footer-images{
+        display: flex;
+        justify-content: center;
+        margin:0 auto;
+        gap: 1rem;
+    }
+    .footer-images img{
+        width: 40px;
+    }
+
+}
+@media(min-width: 320px){
+    .footer-content{
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+    .footer-list{
+        display: flex;
+        gap: 1rem;
+
+    }
+    .footer-images{
+        display: flex;
+        justify-content: center;
+        margin:0 auto;
+        gap: 1rem;
+    }
+    .footer-images img{
+        width: 50px;
+    }
+
+}
+@media(min-width: 720px){
+
 }
