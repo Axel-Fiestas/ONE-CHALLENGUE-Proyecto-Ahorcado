@@ -116,9 +116,9 @@ const newWord=document.getElementById("new-word");
 const addAndStart=document.getElementById("save-start");
 addAndStart.addEventListener("click",()=>{
 
-    console.log(newWord.value);
+    let isEmpty=()=>newWord.value==="";
 
-    if(isAMayus(newWord)){
+    if(isAMayus(newWord) && !isEmpty()){
         words.push(newWord.value);
         document.getElementById("secondary-part").style.display="none";
         document.getElementById("game-part").style.display="flex";
