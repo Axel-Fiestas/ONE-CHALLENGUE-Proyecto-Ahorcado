@@ -14,3 +14,17 @@ Segundo desafío propuesto del programa Oracle Next Education, básicamente se t
 
 **Extras:**
 - La página debe tener un campo para inserción de texto con la finalidad de adicionar nuevas palabras al juego, e un botón "Agregar palabra". 
+
+**Version Desktop**
+-
+![image](https://user-images.githubusercontent.com/89173967/190883228-f45be6ce-43d9-4907-ba30-60fcca79c8b8.png)
+
+
+**Version Tablet**
+-
+![image](https://user-images.githubusercontent.com/89173967/190883240-a41945d4-3295-44d1-b6dd-1b33681f73a4.png)
+
+
+**Version Móvil**
+-
+![image](https://user-images.githubusercontent.com/89173967/190883253-7521276d-beab-4782-897e-a4c0c4f96ff9.png)
