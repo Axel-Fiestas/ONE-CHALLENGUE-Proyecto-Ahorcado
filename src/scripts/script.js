@@ -10,8 +10,10 @@ import {
     checkWin, isAMayus,
     containNumber,
     containCharacterEspecial
-} from '/src/scripts/functions.js';
-import {drawHanged} from '/src/scripts/Hanged.js';
+} from './functions.js'
+ //'./src/scripts/functions.js';
+import {drawHanged} from './Hanged.js'
+//'/src/scripts/Hanged.js';
 
 
 //Values
